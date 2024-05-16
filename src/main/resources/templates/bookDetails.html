@@ -1,0 +1,90 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Details Page</title>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto Thin', sans-serif;
+            font-size: 18px;
+            width: 800px;
+            margin: auto;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #A34343;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #f4f4f4;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .author-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .author-item {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        .author-name {
+            font-weight: bold;
+        }
+
+        .author-biography {
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .genre {
+            margin-bottom: 10px;
+        }
+
+        .year {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 th:text="${book.getTitle()}"></h1>
+</header>
+<section>
+    <div class="genre" th:text="'Genre: ' + ${book.getGenre()}"></div>
+    <div class="year" th:text="'Year of publishing: ' +  ${book.getYear()}"></div>
+    <ul class="author-list" th:each="author :  ${authors}">
+        <li class="author-item" th:if="${author != null}">
+            <span class="author-name" th:text="'Author\'s name: ' + ${author.name} + ' ' + ${author.surname}"></span><br>
+            <span class="author-biography" th:text="'Author\'s biography: ' + ${author.biography}"></span>
+        </li>
+    </ul>
+</section>
+</body>
+</html>
